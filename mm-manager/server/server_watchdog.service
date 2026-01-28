@@ -1,0 +1,19 @@
+[Unit]
+Description=MagicMirror Server Watchdog
+After=network.target graphical.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/server_watchdog.sh
+Restart=no
+
+# Hardening (safe defaults)
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=false
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
